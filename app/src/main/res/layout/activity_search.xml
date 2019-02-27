@@ -23,5 +23,23 @@
         app:layout_constraintLeft_toLeftOf="@id/search_field"
         app:layout_constraintRight_toRightOf="@id/search_field"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/results_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/btn_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <kozelko.me.oeisandroid.SequenceInfo
+        android:id="@+id/tmp_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/results_list">
+    </kozelko.me.oeisandroid.SequenceInfo>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
