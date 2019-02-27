@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OEIS android</string>
+    <string name="search_field_hint">Enter sequence</string>
+    <string name="search_button_text">Search</string>
+</resources>
