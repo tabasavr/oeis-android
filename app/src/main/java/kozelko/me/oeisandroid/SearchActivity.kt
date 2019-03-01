@@ -37,6 +37,9 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
+        results_list.adapter = SearchListAdapter()
+
+
         val api = retrofit.create(OEISApi::class.java)
 
         call = api.search("1,2,3,4,5")
