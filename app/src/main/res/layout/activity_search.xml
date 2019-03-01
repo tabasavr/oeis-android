@@ -34,12 +34,6 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <kozelko.me.oeisandroid.SequenceInfo
-        android:id="@+id/tmp_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/results_list">
-    </kozelko.me.oeisandroid.SequenceInfo>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
