@@ -25,7 +25,12 @@ class SearchActivity : AppCompatActivity() {
             (results_list.adapter as SearchListAdapter).submitList(it)
         })
 
-
-        viewModel.search("1,2,3,4,5")
+        btn_search.setOnClickListener {
+            search_field.text.trim().toString().also {
+                if (!it.isEmpty()) {
+                    viewModel.search(it)
+                }
+            }
+        }
     }
 }
