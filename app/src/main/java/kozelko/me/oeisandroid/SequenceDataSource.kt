@@ -16,14 +16,15 @@ class SequenceDataSource(
 
             override fun onResponse(call: Call<OEISJson>, response: Response<OEISJson>) {
                 val json = response.body()!!
-                Log.d("APP_NETW", "Loaded page" + json.start)
-                callback.onResult(json.results!!, 0, json.count, null, 10)
+                Log.d("APP_NETW", "Loaded initial page " + json.start)
+                callback.onResult(json.results!!, 0, json.count, null, if (10 < json.count) 10 else null)
             }
 
         })
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, SequenceJson>) {
+        Log.d("APP_NETW", "loading with " + params.key)
         api.search(query, params.key).enqueue(object : retrofit2.Callback<OEISJson> {
             override fun onFailure(call: Call<OEISJson>, t: Throwable) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -31,7 +32,7 @@ class SequenceDataSource(
 
             override fun onResponse(call: Call<OEISJson>, response: Response<OEISJson>) {
                 val json = response.body()!!
-                Log.d("APP_NETW", "Loaded page" + json.start)
+                Log.d("APP_NETW", "Loaded page " + json.start + " with " + params.key)
                 callback.onResult(json.results!!, if (params.key + 10 < json.count) params.key + 10 else null)
             }
 
