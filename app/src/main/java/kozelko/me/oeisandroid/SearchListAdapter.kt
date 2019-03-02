@@ -1,16 +1,24 @@
 package kozelko.me.oeisandroid
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import java.util.zip.Inflater
 
 class SearchListAdapter : PagedListAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SequenceInfoViewHolder {
-        return SequenceInfoViewHolder(SequenceInfo(parent.context))
+        val card = LayoutInflater.from(parent.context).inflate(R.layout.sequence_card, parent, false) as CardView
+        return SequenceInfoViewHolder(card)
     }
 
     override fun onBindViewHolder(holder: SequenceInfoViewHolder, position: Int) {
-        holder.setInfo(getItem(position)!!)
+        if (0 == position) {
+            holder.setInfo(getItem(position) ?: SequenceJson())
+        } else {
+            holder.setSmallInfo(getItem(position) ?: SequenceJson())
+        }
     }
 
 

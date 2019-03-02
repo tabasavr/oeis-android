@@ -58,4 +58,13 @@ class SequenceInfo : LinearLayout {
         addText("Author:", json.author)
         addText("Extentions:", json.ext)
     }
+
+    fun setSmallInfo(json: SequenceJson) {
+        removeAllViews()
+        orientation = LinearLayout.VERTICAL
+
+        addText("Id:", "A%06d (formerly %s)".format(json.number, json.id))
+        addText("Name:", json.name)
+        addText("Sequence:", json.data)
+    }
 }
