@@ -2,9 +2,12 @@ package kozelko.me.oeisandroid.ui
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import kotlinx.android.synthetic.main.sequence_info_header.view.*
+import kozelko.me.oeisandroid.R
 import kozelko.me.oeisandroid.api.SequenceJson
 
 class SequenceInfoView : LinearLayout {
@@ -43,29 +46,18 @@ class SequenceInfoView : LinearLayout {
         }
     }
 
-    private fun addTitle(number: Int, id: String?, name: String?) {
-        val layout = LinearLayout(context)
-        layout.orientation = LinearLayout.HORIZONTAL
+    private fun addTitle(number: Int, id: String?, name: String?, data: String?) {
+        val layout = LayoutInflater.from(context).inflate(R.layout.sequence_info_header, this, true)
 
-        val number_tv = TextView(context)
-        number_tv.minEms = 7
-        number_tv.maxEms = 7
-        number_tv.layoutParams = ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        number_tv.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
-        layout.addView(number_tv)
-
-        val name_tv = TextView(context)
-        name_tv.text = name ?: "No name"
-        layout.addView(name_tv)
-
-        addView(layout)
+        layout.info_header_number.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
+        layout.info_header_name.text = name ?: "No name"
+        layout.info_header_sequence.text = data ?: "No data"
     }
 
     fun setInfo(json: SequenceJson) {
         removeAllViews()
 
-        addTitle(json.number, json.id, json.name)
-        addText("Sequence:", json.data)
+        addTitle(json.number, json.id, json.name, json.data)
         addText("Comments:", json.comment)
         addText("References:", json.reference)
         addText("Links:", json.link)
@@ -84,7 +76,6 @@ class SequenceInfoView : LinearLayout {
     fun setSmallInfo(json: SequenceJson) {
         removeAllViews()
 
-        addTitle(json.number, json.id, json.name)
-        addText("Sequence:", json.data)
+        addTitle(json.number, json.id, json.name, json.data)
     }
 }

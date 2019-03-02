@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:parentTag="LinearLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/info_header_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:maxEms="7"
+            android:textSize="16sp"
+            android:textColor="@color/bodyTextColor"
+            tools:text="A000000" />
+
+        <TextView
+            android:id="@+id/info_header_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/bodyTextColor"
+            tools:text="Some sequence\nmultiline text" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/sequence_caption"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/info_header_sequence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:textSize="16sp"
+        android:textColor="@color/bodyTextColor"
+        tools:text="1,2,3,4,5" />
+
+</merge>

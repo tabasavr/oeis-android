@@ -11,8 +11,6 @@ import kozelko.me.oeisandroid.api.SequenceJson
 class SearchListAdapter : PagedListAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SequenceInfoViewHolder {
         val card = LayoutInflater.from(parent.context).inflate(R.layout.sequence_card, parent, false) as CardView
-        card.cardElevation = 5f
-        card.layoutParams = ViewGroup.MarginLayoutParams(card.layoutParams).apply { setMargins(8,8,8,8) }
         return SequenceInfoViewHolder(card)
     }
 
