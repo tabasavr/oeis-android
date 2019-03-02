@@ -2,14 +2,19 @@ package kozelko.me.oeisandroid
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 
 class SequenceInfo : LinearLayout {
 
-    constructor(context : Context) : super(context)
+    constructor(context : Context) : super(context) {
+        orientation = VERTICAL
+    }
 
-    constructor(context : Context, attributeSet : AttributeSet) : super(context, attributeSet)
+    constructor(context : Context, attributeSet : AttributeSet) : super(context, attributeSet) {
+        orientation = VERTICAL
+    }
 
     private fun addText(title: String, text : String?) {
         if (text != null) {
@@ -37,12 +42,28 @@ class SequenceInfo : LinearLayout {
         }
     }
 
+    private fun addTitle(number: Int, id: String?, name: String?) {
+        val layout = LinearLayout(context)
+        layout.orientation = LinearLayout.HORIZONTAL
+
+        val number_tv = TextView(context)
+        number_tv.minEms = 7
+        number_tv.maxEms = 7
+        number_tv.layoutParams = ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        number_tv.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
+        layout.addView(number_tv)
+
+        val name_tv = TextView(context)
+        name_tv.text = name ?: "No name"
+        layout.addView(name_tv)
+
+        addView(layout)
+    }
+
     fun setInfo(json: SequenceJson) {
         removeAllViews()
-        orientation = LinearLayout.VERTICAL
 
-        addText("Id:", "A%06d (formerly %s)".format(json.number, json.id))
-        addText("Name:", json.name)
+        addTitle(json.number, json.id, json.name)
         addText("Sequence:", json.data)
         addText("Comments:", json.comment)
         addText("References:", json.reference)
@@ -61,10 +82,8 @@ class SequenceInfo : LinearLayout {
 
     fun setSmallInfo(json: SequenceJson) {
         removeAllViews()
-        orientation = LinearLayout.VERTICAL
 
-        addText("Id:", "A%06d (formerly %s)".format(json.number, json.id))
-        addText("Name:", json.name)
+        addTitle(json.number, json.id, json.name)
         addText("Sequence:", json.data)
     }
 }
