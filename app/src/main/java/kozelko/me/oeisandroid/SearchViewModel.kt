@@ -12,7 +12,7 @@ class SearchViewModel : ViewModel() {
         model.search(it)
     }!!
 
-    public fun search(query: String) {
+    fun search(query: String) {
         currentQuery.postValue(query)
     }
 }

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import java.util.zip.Inflater
 
 class SearchListAdapter : PagedListAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SequenceInfoViewHolder {

@@ -56,7 +56,7 @@ class SequenceInfo : LinearLayout {
         addText("Keywords:", json.keyword)
         addText("Offset:", json.offset)
         addText("Author:", json.author)
-        addText("Extentions:", json.ext)
+        addText("Extensions:", json.ext)
     }
 
     fun setSmallInfo(json: SequenceJson) {
