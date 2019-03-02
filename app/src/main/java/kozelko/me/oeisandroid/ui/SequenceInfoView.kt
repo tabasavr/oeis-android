@@ -1,12 +1,13 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.ui
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import kozelko.me.oeisandroid.api.SequenceJson
 
-class SequenceInfo : LinearLayout {
+class SequenceInfoView : LinearLayout {
 
     constructor(context : Context) : super(context) {
         orientation = VERTICAL

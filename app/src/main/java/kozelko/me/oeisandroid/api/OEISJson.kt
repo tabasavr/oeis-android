@@ -1,4 +1,4 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.api
 
 import com.squareup.moshi.JsonClass
 

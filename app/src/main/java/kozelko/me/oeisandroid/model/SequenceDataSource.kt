@@ -1,13 +1,17 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.model
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
+import kozelko.me.oeisandroid.api.OEISApi
+import kozelko.me.oeisandroid.api.OEISJson
+import kozelko.me.oeisandroid.api.SequenceJson
 import retrofit2.Call
 import retrofit2.Response
 
 class SequenceDataSource(
     private val query : String,
-    private val api: OEISApi) : PageKeyedDataSource<Int, SequenceJson>() {
+    private val api: OEISApi
+) : PageKeyedDataSource<Int, SequenceJson>() {
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, SequenceJson>) {
         api.search(query).enqueue(object : retrofit2.Callback<OEISJson> {
             override fun onFailure(call: Call<OEISJson>, t: Throwable) {

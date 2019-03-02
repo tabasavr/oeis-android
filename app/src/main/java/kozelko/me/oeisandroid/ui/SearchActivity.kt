@@ -1,4 +1,4 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_search.*
+import kozelko.me.oeisandroid.R
+import kozelko.me.oeisandroid.api.SequenceJson
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var viewModel : SearchViewModel

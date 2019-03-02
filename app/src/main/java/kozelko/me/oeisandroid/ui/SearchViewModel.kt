@@ -1,8 +1,9 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations.switchMap
 import androidx.lifecycle.ViewModel
+import kozelko.me.oeisandroid.model.SearchModel
 
 class SearchViewModel : ViewModel() {
     private val model = SearchModel()

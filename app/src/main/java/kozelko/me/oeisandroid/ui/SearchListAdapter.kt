@@ -1,12 +1,12 @@
-package kozelko.me.oeisandroid
+package kozelko.me.oeisandroid.ui
 
-import android.os.Build
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import kozelko.me.oeisandroid.R
+import kozelko.me.oeisandroid.api.SequenceJson
 
 class SearchListAdapter : PagedListAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SequenceInfoViewHolder {

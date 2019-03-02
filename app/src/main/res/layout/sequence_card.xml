@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-       <kozelko.me.oeisandroid.SequenceInfo
+       <kozelko.me.oeisandroid.ui.SequenceInfoView
            android:id="@+id/info"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"/>
