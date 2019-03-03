@@ -16,4 +16,6 @@ class SearchViewModel : ViewModel() {
     fun search(query: String) {
         currentQuery.postValue(query)
     }
+
+    fun getQuery() = currentQuery.value ?: ""
 }
