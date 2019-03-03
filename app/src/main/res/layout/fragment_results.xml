@@ -28,6 +28,7 @@
         android:text="@string/search_button_text"
         android:layout_marginRight="8dp"
         android:transitionName="search_button"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/search_field"
         app:layout_constraintRight_toRightOf="parent"

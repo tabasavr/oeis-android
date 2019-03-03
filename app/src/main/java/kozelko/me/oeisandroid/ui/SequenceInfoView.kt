@@ -51,7 +51,7 @@ class SequenceInfoView : LinearLayout {
 
         layout.info_header_number.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
         layout.info_header_name.text = name ?: "No name"
-        layout.info_header_sequence.text = data ?: "No data"
+        layout.info_header_sequence.text = data?.replace(",", ", ") ?: "No data"
     }
 
     fun setInfo(json: SequenceJson) {
