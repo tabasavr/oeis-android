@@ -20,7 +20,7 @@ class SearchRepository {
     private val api = retrofit.create(OEISApi::class.java)
 
     fun search(query:String) : LiveData<PagedList<SequenceJson>> {
-        val sourceFactory = SequenceDataSourceFactory(query, api)
+        val sourceFactory = SequencePagingSourceFactory(query, api)
         return sourceFactory.toLiveData(10)
     }
 }
