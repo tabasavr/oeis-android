@@ -31,6 +31,7 @@ dependencies {
     def appcompat = "1.5.1"
     def lifecycle = "2.5.1"
     def fragment_version = "1.5.4"
+    def retrofit_version = "2.9.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -44,8 +45,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
     implementation 'androidx.transition:transition:1.0.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
     testImplementation 'junit:junit:4.12'
