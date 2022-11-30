@@ -24,24 +24,8 @@ class SequencePagingSource(
         Log.d("APP_NETW", "loading with $start")
 
         try {
-            val json = suspendCancellableCoroutine { continuation ->
-                api.search(query, start).enqueue(object: Callback<OEISJson> {
-                    override fun onResponse(call: Call<OEISJson>, response: Response<OEISJson>) {
-                        if (response.isSuccessful) {
-                            response.body()?.let {
-                                Log.d("APP_NETW", "Loaded page ${it.start}")
-                                continuation.resume(it)
-                            }
-                        } else {
-                            continuation.resumeWithException(IOException("Response code ${response.code()}"))
-                        }
-                    }
-
-                    override fun onFailure(call: Call<OEISJson>, t: Throwable) {
-                        continuation.resumeWithException(t)
-                    }
-                })
-            }
+            val json = api.search(query, start)
+            Log.d("APP_NETW", "Loaded page $start")
             val nextKey = if (start + 10 < json.count) { start + 10 } else { null }
             return LoadResult.Page(json.results!!, null, nextKey)
         } catch (e: IOException) {
