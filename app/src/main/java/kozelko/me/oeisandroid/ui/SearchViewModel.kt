@@ -1,21 +1,22 @@
 package kozelko.me.oeisandroid.ui
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations.switchMap
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import kozelko.me.oeisandroid.model.SearchRepository
 
-class SearchViewModel : ViewModel() {
+private const val QUERY_KEY = "query_key"
+
+class SearchViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
     private val model = SearchRepository()
 
-    private val currentQuery = MutableLiveData<String>()
-    val sequences = switchMap(currentQuery) {
+    val sequences = savedStateHandle.getLiveData<String>(QUERY_KEY).switchMap {
         model.search(it)
-    }!!
-
-    fun search(query: String) {
-        currentQuery.postValue(query)
     }
 
-    fun getQuery() = currentQuery.value ?: ""
+    fun search(query: String) {
+        savedStateHandle[QUERY_KEY] = query
+    }
+
+    fun getQuery() = savedStateHandle[QUERY_KEY] ?: ""
 }
