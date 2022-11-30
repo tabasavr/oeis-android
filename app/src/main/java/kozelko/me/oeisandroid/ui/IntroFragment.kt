@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.transition.AutoTransition
 import kotlinx.android.synthetic.main.fragment_intro.view.*
 import kozelko.me.oeisandroid.R
@@ -14,7 +14,7 @@ import kozelko.me.oeisandroid.R
 class IntroFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_intro, container, false)
-        val viewModel = ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
+        val viewModel by viewModels<SearchViewModel>()
 
         view.btn_search.setOnClickListener {
             view.search_field.text.trim().toString().also {

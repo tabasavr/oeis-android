@@ -5,18 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_results.view.*
 import kozelko.me.oeisandroid.R
 
 class ResultsFragment:Fragment() {
-    private lateinit var viewModel : SearchViewModel
+    private val viewModel : SearchViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_results, container, false)
-        viewModel = ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
 
         view.results_list.adapter = SearchListAdapter()
         view.results_list.layoutManager = LinearLayoutManager(context)
