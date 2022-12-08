@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:imeOptions="actionSearch"
         android:hint="@string/search_field_hint"
         android:layout_marginLeft="8dp"
         android:transitionName="search_field"

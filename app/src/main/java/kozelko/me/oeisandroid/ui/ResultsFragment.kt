@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_results.view.*
+import kotlinx.android.synthetic.main.fragment_results.view.btn_search
+import kotlinx.android.synthetic.main.fragment_results.view.search_field
 import kozelko.me.oeisandroid.R
 
 class ResultsFragment:Fragment() {
@@ -33,6 +36,15 @@ class ResultsFragment:Fragment() {
         }
 
         view.search_field.setText(viewModel.getQuery())
+        view.search_field.setOnEditorActionListener { v, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    viewModel.search(v.text.trim().toString())
+                    true
+                }
+                else -> false
+            }
+        }
 
         view.btn_search.setOnClickListener {
             view.search_field.text.trim().toString().also {
