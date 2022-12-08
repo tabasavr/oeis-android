@@ -19,7 +19,7 @@ class ResultsFragment:Fragment() {
         val view = inflater.inflate(R.layout.fragment_results, container, false)
 
         val adapter = SearchListAdapter()
-        view.results_list.adapter = adapter
+        view.results_list.adapter = adapter.withLoadStateFooter(SearchListLoadStateFooter())
         view.results_list.layoutManager = LinearLayoutManager(context)
 
         viewModel.sequences.observe(viewLifecycleOwner) {
