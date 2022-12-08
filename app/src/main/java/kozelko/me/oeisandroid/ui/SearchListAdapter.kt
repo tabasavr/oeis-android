@@ -3,12 +3,12 @@ package kozelko.me.oeisandroid.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import kozelko.me.oeisandroid.R
 import kozelko.me.oeisandroid.api.SequenceJson
 
-class SearchListAdapter : PagedListAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
+class SearchListAdapter : PagingDataAdapter<SequenceJson, SequenceInfoViewHolder>(SEQUENCE_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SequenceInfoViewHolder {
         val card = LayoutInflater.from(parent.context).inflate(R.layout.sequence_card, parent, false) as CardView
         return SequenceInfoViewHolder(card)
