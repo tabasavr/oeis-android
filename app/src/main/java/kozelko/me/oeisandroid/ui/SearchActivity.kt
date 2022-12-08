@@ -11,6 +11,7 @@ class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         val viewModel by viewModels<SearchViewModel>()
 
