@@ -9,15 +9,24 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.transition.AutoTransition
-import kotlinx.android.synthetic.main.fragment_intro.view.*
 import kozelko.me.oeisandroid.R
+import kozelko.me.oeisandroid.databinding.FragmentIntroBinding
 
 class IntroFragment: Fragment() {
-    private val viewModel by activityViewModels<SearchViewModel>()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_intro, container, false)
+    private var _binding: FragmentIntroBinding? = null
+    private val binding get() = _binding!!
 
-        view.search_field.setOnEditorActionListener { v, actionId, _ ->
+    private val viewModel by activityViewModels<SearchViewModel>()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentIntroBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.searchField.setOnEditorActionListener { v, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     doSearch(v.text.trim().toString())
@@ -27,12 +36,11 @@ class IntroFragment: Fragment() {
             }
         }
 
-        view.btn_search.setOnClickListener {
-            view.search_field.text.trim().toString().also {
+        binding.btnSearch.setOnClickListener {
+            binding.searchField.text.trim().toString().also {
                 doSearch(it)
             }
         }
-        return view
     }
 
     private fun doSearch(query: String) {
@@ -46,11 +54,16 @@ class IntroFragment: Fragment() {
                     }
                 }
                 requireActivity().supportFragmentManager.beginTransaction()
-                    .addSharedElement(it.btn_search, "search_button")
-                    .addSharedElement(it.search_field, "search_field")
+                    .addSharedElement(binding.btnSearch, "search_button")
+                    .addSharedElement(binding.searchField, "search_field")
                     .replace(R.id.fragment_container, fragment)
                     .commit()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

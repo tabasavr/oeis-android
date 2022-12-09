@@ -1,12 +1,13 @@
 package kozelko.me.oeisandroid.ui
 
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import kozelko.me.oeisandroid.R
 import kozelko.me.oeisandroid.api.SequenceJson
+import kozelko.me.oeisandroid.databinding.SequenceCardBinding
 
-class SequenceInfoViewHolder(view : CardView) : RecyclerView.ViewHolder(view) {
-    private val info = view.findViewById<SequenceInfoView>(R.id.info)!!
+class SequenceInfoViewHolder(private val binding: SequenceCardBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    private val info
+        get() = binding.info
 
     fun setInfo(json : SequenceJson) {
         info.setInfo(json)

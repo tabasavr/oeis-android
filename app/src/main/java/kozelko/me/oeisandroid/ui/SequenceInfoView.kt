@@ -3,12 +3,10 @@ package kozelko.me.oeisandroid.ui
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import kotlinx.android.synthetic.main.sequence_info_header.view.*
-import kozelko.me.oeisandroid.R
 import kozelko.me.oeisandroid.api.SequenceJson
+import kozelko.me.oeisandroid.databinding.SequenceInfoHeaderBinding
 
 class SequenceInfoView : LinearLayout {
 
@@ -47,11 +45,12 @@ class SequenceInfoView : LinearLayout {
     }
 
     private fun addTitle(number: Int, id: String?, name: String?, data: String?) {
-        val layout = LayoutInflater.from(context).inflate(R.layout.sequence_info_header, this, true)
+        val inflater = LayoutInflater.from(context)
+        val binding = SequenceInfoHeaderBinding.inflate(inflater, this)
 
-        layout.info_header_number.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
-        layout.info_header_name.text = name ?: "No name"
-        layout.info_header_sequence.text = data?.replace(",", ", ") ?: "No data"
+        binding.infoHeaderNumber.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
+        binding.infoHeaderName.text = name ?: "No name"
+        binding.infoHeaderSequence.text = data?.replace(",", ", ") ?: "No data"
     }
 
     fun setInfo(json: SequenceJson) {

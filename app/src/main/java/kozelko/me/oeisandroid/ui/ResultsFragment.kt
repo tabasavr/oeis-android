@@ -10,20 +10,25 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_results.view.*
-import kotlinx.android.synthetic.main.fragment_results.view.btn_search
-import kotlinx.android.synthetic.main.fragment_results.view.search_field
-import kozelko.me.oeisandroid.R
+import kozelko.me.oeisandroid.databinding.FragmentResultsBinding
 
 class ResultsFragment:Fragment() {
+    private var _binding: FragmentResultsBinding? = null
+    private val binding get() = _binding!!
+
     private val viewModel : SearchViewModel by activityViewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_results, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentResultsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val adapter = SearchListAdapter()
-        view.results_list.adapter = adapter.withLoadStateFooter(SearchListLoadStateFooter())
-        view.results_list.layoutManager = LinearLayoutManager(context)
+        binding.resultsRecycler.adapter = adapter.withLoadStateFooter(SearchListLoadStateFooter())
+        binding.resultsRecycler.layoutManager = LinearLayoutManager(context)
 
         viewModel.sequences.observe(viewLifecycleOwner) {
             adapter.submitData(lifecycle, it)
@@ -31,12 +36,12 @@ class ResultsFragment:Fragment() {
 
         adapter.addLoadStateListener {
             if (it.refresh is LoadState.NotLoading) {
-                view.results_list.isVisible = true
+                binding.resultsRecycler.isVisible = true
             }
         }
 
-        view.search_field.setText(viewModel.getQuery())
-        view.search_field.setOnEditorActionListener { v, actionId, _ ->
+        binding.searchField.setText(viewModel.getQuery())
+        binding.searchField.setOnEditorActionListener { v, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_SEARCH -> {
                     viewModel.search(v.text.trim().toString())
@@ -46,13 +51,17 @@ class ResultsFragment:Fragment() {
             }
         }
 
-        view.btn_search.setOnClickListener {
-            view.search_field.text.trim().toString().also {
+        binding.btnSearch.setOnClickListener {
+            binding.searchField.text.trim().toString().also {
                 if (it.isNotEmpty()) {
                     viewModel.search(it)
                 }
             }
         }
-        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -2,11 +2,10 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
+    namespace 'kozelko.me.oeisandroid'
     compileSdkVersion 33
     defaultConfig {
         applicationId "kozelko.me.oeisandroid"
@@ -22,7 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    namespace 'kozelko.me.oeisandroid'
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
