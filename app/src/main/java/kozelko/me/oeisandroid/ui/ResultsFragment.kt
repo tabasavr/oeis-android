@@ -12,13 +12,17 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import kozelko.me.oeisandroid.databinding.FragmentResultsBinding
 
-class ResultsFragment:Fragment() {
+class ResultsFragment : Fragment() {
     private var _binding: FragmentResultsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel : SearchViewModel by activityViewModels()
+    private val viewModel: SearchViewModel by activityViewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -9,7 +9,7 @@ class SequenceInfoViewHolder(private val binding: SequenceCardBinding) :
     private val info
         get() = binding.info
 
-    fun setInfo(json : SequenceJson) {
+    fun setInfo(json: SequenceJson) {
         info.setInfo(json)
     }
 

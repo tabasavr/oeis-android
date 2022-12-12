@@ -12,13 +12,17 @@ import androidx.transition.AutoTransition
 import kozelko.me.oeisandroid.R
 import kozelko.me.oeisandroid.databinding.FragmentIntroBinding
 
-class IntroFragment: Fragment() {
+class IntroFragment : Fragment() {
     private var _binding: FragmentIntroBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<SearchViewModel>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentIntroBinding.inflate(inflater, container, false)
         return binding.root
     }

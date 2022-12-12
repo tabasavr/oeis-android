@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kozelko.me.oeisandroid.R
 
 // todo: support error
-class SearchListLoadStateFooter: LoadStateAdapter<RecyclerView.ViewHolder>() {
+class SearchListLoadStateFooter : LoadStateAdapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, loadState: LoadState) {
         // no-op
     }
@@ -19,7 +19,9 @@ class SearchListLoadStateFooter: LoadStateAdapter<RecyclerView.ViewHolder>() {
         loadState: LoadState
     ): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return FooterViewHolder(inflater.inflate(R.layout.sequence_load_state_footer, parent, false))
+        return FooterViewHolder(
+            inflater.inflate(R.layout.sequence_load_state_footer, parent, false)
+        )
     }
 }
 

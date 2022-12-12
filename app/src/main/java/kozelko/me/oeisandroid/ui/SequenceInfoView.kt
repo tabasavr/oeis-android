@@ -10,15 +10,15 @@ import kozelko.me.oeisandroid.databinding.SequenceInfoHeaderBinding
 
 class SequenceInfoView : LinearLayout {
 
-    constructor(context : Context) : super(context) {
+    constructor(context: Context) : super(context) {
         orientation = VERTICAL
     }
 
-    constructor(context : Context, attributeSet : AttributeSet) : super(context, attributeSet) {
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet) {
         orientation = VERTICAL
     }
 
-    private fun addText(title: String, text : String?) {
+    private fun addText(title: String, text: String?) {
         if (text != null) {
             val titleView = TextView(context)
             titleView.text = title
@@ -36,7 +36,7 @@ class SequenceInfoView : LinearLayout {
             titleView.text = title
             addView(titleView)
 
-            list.forEach{
+            list.forEach {
                 val tv = TextView(context)
                 tv.text = it
                 addView(tv)
@@ -48,7 +48,8 @@ class SequenceInfoView : LinearLayout {
         val inflater = LayoutInflater.from(context)
         val binding = SequenceInfoHeaderBinding.inflate(inflater, this)
 
-        binding.infoHeaderNumber.text = "A%06d".format(number) + if (id != null) { "\n" + id.replace(" ", "\n")} else {""}
+        val ids = listOf("A%06d".format(number)) + (id?.split(" ") ?: emptyList())
+        binding.infoHeaderNumber.text = ids.joinToString("\n")
         binding.infoHeaderName.text = name ?: "No name"
         binding.infoHeaderSequence.text = data?.replace(",", ", ") ?: "No data"
     }
