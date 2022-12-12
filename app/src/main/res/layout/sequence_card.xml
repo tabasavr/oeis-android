@@ -6,8 +6,7 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="1dp"
-    app:contentPadding="8dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    app:contentPadding="8dp">
 
        <kozelko.me.oeisandroid.ui.SequenceInfoView
            android:id="@+id/info"
