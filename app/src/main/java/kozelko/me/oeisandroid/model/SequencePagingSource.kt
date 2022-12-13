@@ -18,9 +18,13 @@ class SequencePagingSource(
         try {
             val json = api.search(query, start)
             if (json.results == null) {
-                // api sometimes returns null, usually for requests with a lot of results
+                // api can return null if there are no results or too many of them
                 //todo: better error handling
-                return LoadResult.Error(NullPointerException())
+                return if (json.count == 0) {
+                    LoadResult.Page(emptyList(), null, null)
+                } else {
+                    LoadResult.Error(NullPointerException())
+                }
             }
 
             Log.d("APP_NETW", "Loaded page $start")
