@@ -3,17 +3,9 @@ package kozelko.me.oeisandroid.model
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kozelko.me.oeisandroid.api.OEISApi
-import kozelko.me.oeisandroid.api.OEISJson
 import kozelko.me.oeisandroid.api.SequenceJson
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.IOException
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
 
 class SequencePagingSource(
     private val query : String,
@@ -25,9 +17,15 @@ class SequencePagingSource(
 
         try {
             val json = api.search(query, start)
+            if (json.results == null) {
+                // api sometimes returns null, usually for requests with a lot of results
+                //todo: better error handling
+                return LoadResult.Error(NullPointerException())
+            }
+
             Log.d("APP_NETW", "Loaded page $start")
             val nextKey = if (start + 10 < json.count) { start + 10 } else { null }
-            return LoadResult.Page(json.results!!, null, nextKey)
+            return LoadResult.Page(json.results, null, nextKey)
         } catch (e: IOException) {
             return LoadResult.Error(e)
         }
