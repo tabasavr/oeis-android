@@ -3,6 +3,7 @@ package kozelko.me.oeisandroid.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import kozelko.me.oeisandroid.R
 
 class SearchActivity : AppCompatActivity() {
@@ -11,6 +12,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         setSupportActionBar(findViewById(R.id.toolbar))
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val viewModel by viewModels<SearchViewModel>()
 

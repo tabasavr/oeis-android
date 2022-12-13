@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -33,6 +35,12 @@ class ResultsFragment : Fragment() {
         val adapter = SearchListAdapter()
         binding.resultsRecycler.adapter = adapter.withLoadStateFooter(SearchListLoadStateFooter())
         binding.resultsRecycler.layoutManager = LinearLayoutManager(context)
+        // todo: check how this looks on API 19 or bump minSdk
+        ViewCompat.setOnApplyWindowInsetsListener(binding.resultsRecycler) { v, insets ->
+            val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, systemBarsInsets.bottom)
+            insets
+        }
 
         viewModel.sequences.observe(viewLifecycleOwner) {
             adapter.submitData(lifecycle, it)
