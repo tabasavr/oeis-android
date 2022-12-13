@@ -24,7 +24,7 @@ class SequencePagingSource(
             }
 
             Log.d("APP_NETW", "Loaded page $start")
-            val nextKey = if (start + 10 < json.count) { start + 10 } else { null }
+            val nextKey = (json.start + json.results.size).takeIf { it < json.count }
             return LoadResult.Page(json.results, null, nextKey)
         } catch (e: IOException) {
             return LoadResult.Error(e)
