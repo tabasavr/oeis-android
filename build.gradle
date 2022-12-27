@@ -1,4 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 buildscript {
     ext.kotlin_version = '1.7.20'
@@ -15,6 +18,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.22.0"
+}
+
 allprojects {
     repositories {
         google()
@@ -24,4 +31,37 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+// Detekt report merging
+tasks.register("reportMerge", ReportMergeTask) {
+    output = project.layout.buildDirectory.file("reports/detekt/merge.sarif")
+}
+
+subprojects {
+    // Detekt
+    detekt {
+        buildUponDefaultConfig = true
+        baseline = file("${rootProject.projectDir}/detekt/baseline.xml")
+    }
+
+    tasks.withType(Detekt).configureEach {
+        jvmTarget = "1.8"
+        basePath = rootProject.projectDir.absolutePath
+
+        reports {
+            sarif.enabled = true
+            // workaround for https://github.com/detekt/detekt/issues/4192
+            sarif.destination = project.file("build/reports/detekt/detekt.sarif")
+        }
+        finalizedBy(reportMerge)
+
+        reportMerge.configure { mergeTask ->
+            mergeTask.input.from(sarifReportFile)
+        }
+    }
+
+    tasks.withType(DetektCreateBaselineTask).configureEach {
+        jvmTarget = "1.8"
+    }
 }
