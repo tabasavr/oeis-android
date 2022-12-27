@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 
 plugins {
     id "com.diffplug.spotless" version "6.12.0"
-    id "io.gitlab.arturbosch.detekt" version "1.22.0"
+    id "io.gitlab.arturbosch.detekt"
 }
 
 apply plugin: 'com.android.application'
@@ -75,25 +75,4 @@ spotless {
                 .setUseExperimental(true)
                 .userData(["android": "true"])
     }
-}
-
-detekt {
-    buildUponDefaultConfig = true
-    baseline = file("${rootProject.projectDir}/detekt/baseline.xml")
-}
-
-tasks.named("detekt").configure {
-    reports {
-        html.required.set(true) // observe findings in your browser with structure and code snippets
-        xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
-        txt.required.set(true) // similar to the console output, contains issue signature to manually edit baseline files
-        sarif.required.set(true) // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with Github Code Scanning
-    }
-}
-
-tasks.withType(Detekt).configureEach {
-    jvmTarget = "1.8"
-}
-tasks.withType(DetektCreateBaselineTask).configureEach {
-    jvmTarget = "1.8"
 }
