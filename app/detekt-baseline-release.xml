@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ForbiddenComment:ResultsFragment.kt$ResultsFragment$// todo: check how this looks on API 19 or bump minSdk</ID>
+    <ID>ForbiddenComment:SearchListLoadStateFooter.kt$SearchListLoadStateFooter$// todo: support error</ID>
+    <ID>ForbiddenComment:SequencePagingSource.kt$SequencePagingSource$//todo: better error handling</ID>
+    <ID>NestedBlockDepth:IntroFragment.kt$IntroFragment$private fun doSearch(query: String)</ID>
+    <ID>NewLineAtEndOfFile:OEISApi.kt$kozelko.me.oeisandroid.api.OEISApi.kt</ID>
+    <ID>NewLineAtEndOfFile:OEISJson.kt$kozelko.me.oeisandroid.api.OEISJson.kt</ID>
+    <ID>NewLineAtEndOfFile:SequenceJson.kt$kozelko.me.oeisandroid.api.SequenceJson.kt</ID>
+    <ID>NewLineAtEndOfFile:SequencePagingSourceFactory.kt$kozelko.me.oeisandroid.model.SequencePagingSourceFactory.kt</ID>
+    <ID>NoNameShadowing:IntroFragment.kt$IntroFragment${ doSearch(it) }</ID>
+    <ID>NoNameShadowing:ResultsFragment.kt$ResultsFragment${ if (it.isNotEmpty()) { viewModel.search(it) } }</ID>
+    <ID>ReturnCount:SequencePagingSource.kt$SequencePagingSource$override suspend fun load(params: LoadParams&lt;Int&gt;): LoadResult&lt;Int, SequenceJson&gt;</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:SequencePagingSource.kt$SequencePagingSource$NullPointerException()</ID>
+    <ID>UnsafeCallOnNullableType:IntroFragment.kt$IntroFragment$_binding!!</ID>
+    <ID>UnsafeCallOnNullableType:ResultsFragment.kt$ResultsFragment$_binding!!</ID>
+    <ID>UseOrEmpty:SequenceInfoView.kt$SequenceInfoView$id?.split(" ") ?: emptyList()</ID>
+  </CurrentIssues>
+</SmellBaseline>

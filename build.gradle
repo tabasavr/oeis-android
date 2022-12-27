@@ -42,7 +42,6 @@ subprojects {
     // Detekt
     detekt {
         buildUponDefaultConfig = true
-        baseline = file("${rootProject.projectDir}/detekt/baseline.xml")
     }
 
     tasks.withType(Detekt).configureEach {
