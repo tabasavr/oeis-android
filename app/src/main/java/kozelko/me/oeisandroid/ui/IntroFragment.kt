@@ -14,6 +14,7 @@ import kozelko.me.oeisandroid.databinding.FragmentIntroBinding
 
 class IntroFragment : Fragment() {
     private var _binding: FragmentIntroBinding? = null
+    @Suppress("UnsafeCallOnNullableType")
     private val binding get() = _binding!!
 
     private val viewModel by activityViewModels<SearchViewModel>()
@@ -51,18 +52,16 @@ class IntroFragment : Fragment() {
         if (query.isNotBlank()) {
             viewModel.search(query)
 
-            view?.let {
-                val fragment = ResultsFragment().apply {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        sharedElementEnterTransition = AutoTransition()
-                    }
+            val fragment = ResultsFragment().apply {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    sharedElementEnterTransition = AutoTransition()
                 }
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .addSharedElement(binding.btnSearch, "search_button")
-                    .addSharedElement(binding.searchField, "search_field")
-                    .replace(R.id.fragment_container, fragment)
-                    .commit()
             }
+            requireActivity().supportFragmentManager.beginTransaction()
+                .addSharedElement(binding.btnSearch, "search_button")
+                .addSharedElement(binding.searchField, "search_field")
+                .replace(R.id.fragment_container, fragment)
+                .commit()
         }
     }
 

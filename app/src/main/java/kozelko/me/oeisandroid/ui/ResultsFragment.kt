@@ -16,6 +16,7 @@ import kozelko.me.oeisandroid.databinding.FragmentResultsBinding
 
 class ResultsFragment : Fragment() {
     private var _binding: FragmentResultsBinding? = null
+    @Suppress("UnsafeCallOnNullableType")
     private val binding get() = _binding!!
 
     private val viewModel: SearchViewModel by activityViewModels()
