@@ -5,10 +5,6 @@ import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 buildscript {
     ext.kotlin_version = '1.7.22'
-    repositories {
-        google()
-        mavenCentral()
-    }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -20,13 +16,6 @@ buildscript {
 
 plugins {
     id "io.gitlab.arturbosch.detekt" version "1.22.0"
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
 }
 
 task clean(type: Delete) {
