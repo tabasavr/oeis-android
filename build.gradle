@@ -15,12 +15,12 @@ plugins {
     id "io.gitlab.arturbosch.detekt" version "1.22.0"
 }
 
-task clean(type: Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
 
 // Detekt report merging
-tasks.register("reportMerge", ReportMergeTask) {
+def reportMerge = tasks.register("reportMerge", ReportMergeTask) {
     output = project.layout.buildDirectory.file("reports/detekt/merge.sarif")
 }
 
