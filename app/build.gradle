@@ -31,7 +31,7 @@ android {
 dependencies {
     def moshiVersion = "1.14.0"
     def pagingVersion = "3.1.1"
-    def appcompat = "1.5.1"
+    def appcompat = "1.6.0"
     def lifecycle = "2.5.1"
     def fragment_version = "1.5.5"
     def retrofit_version = "2.9.0"
