@@ -11,6 +11,9 @@ jobs:
   detekt:
     name: Detekt
     runs-on: ubuntu-latest
+    permissions:
+      # for codeql
+      security-events: write
     steps:
       - uses: actions/checkout@v3
 
