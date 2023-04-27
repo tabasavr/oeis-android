@@ -46,7 +46,7 @@ dependencies {
     def pagingVersion = "3.1.1"
     def appcompat = "1.6.1"
     def lifecycle = "2.6.1"
-    def fragment_version = "1.5.6"
+    def fragment_version = "1.5.7"
     def retrofit_version = "2.9.0"
     def material_version = "1.7.0"
     def constraint_version = "2.1.4"
