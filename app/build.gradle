@@ -42,7 +42,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 }
 
 dependencies {
-    def moshiVersion = "1.14.0"
+    def moshiVersion = "1.15.0"
     def pagingVersion = "3.1.1"
     def appcompat = "1.6.1"
     def lifecycle = "2.6.1"
