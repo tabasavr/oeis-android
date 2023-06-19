@@ -1,9 +1,9 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("com.diffplug.spotless")
-    id("io.gitlab.arturbosch.detekt")
+    alias(libs.plugins.agp.app)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -42,33 +42,24 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
-    val moshiVersion = "1.15.0"
-    val pagingVersion = "3.1.1"
-    val appcompat = "1.6.1"
-    val lifecycle = "2.6.1"
-    val fragment_version = "1.6.0"
-    val retrofit_version = "2.9.0"
-    val material_version = "1.7.0"
-    val constraint_version = "2.1.4"
-
-    implementation("com.google.android.material:material:$material_version")
-    implementation("androidx.appcompat:appcompat:$appcompat")
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation("androidx.constraintlayout:constraintlayout:$constraint_version")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle")
-    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-    implementation("androidx.transition:transition:1.4.1")
-    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofit_version")
-    implementation("com.squareup.moshi:moshi:$moshiVersion")
-    implementation("com.squareup.moshi:moshi-adapters:$moshiVersion")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.transition)
+    implementation(libs.material)
+    implementation(libs.moshi.core)
+    implementation(libs.moshi.adapters)
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converterMoshi)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.espresso)
+    ksp(libs.moshi.ksp)
 }
 
 spotless {

@@ -4,11 +4,11 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 plugins {
-    id("com.android.application") version "8.0.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.22" apply false
-    id("com.google.devtools.ksp") version "1.8.22-1.0.11" apply false
-    id("com.diffplug.spotless") version "6.19.0" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    alias(libs.plugins.agp.app) apply false
+    alias(libs.plugins.kotlin) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.detekt)
 }
 
 tasks.register<Delete>("clean") {
