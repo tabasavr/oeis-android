@@ -1,0 +1,64 @@
+[versions]
+### Libraries
+# AndroidX
+appcompat = "1.6.1"
+cardview = "1.0.0"
+constraintlayout = "2.1.4"
+fragment = "1.6.0"
+lifecycle = "2.6.1"
+paging = "3.1.1"
+recyclerview = "1.2.1"
+transition = "1.4.1"
+
+material = "1.7.0"
+
+# Third-party
+moshi = "1.15.0"
+retrofit = "2.9.0"
+
+# Testing
+testRunner = "1.5.2"
+espresso = "3.5.1"
+
+junit = "4.13.2"
+
+### Plugins
+agp = "8.0.2"
+kotlin = "1.8.22"
+ksp = "1.8.22-1.0.11"
+spotless = "6.19.0"
+detekt = "1.23.0"
+
+[libraries]
+# AndroidX
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+androidx-lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+androidx-transition = { group = "androidx.transition", name = "transition", version.ref = "transition" }
+
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Third-party
+moshi-core = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-adapters = { group = "com.squareup.moshi", name = "moshi-adapters", version.ref = "moshi" }
+moshi-ksp = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converterMoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+
+# Testing
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "testRunner" }
+androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+[plugins]
+agp-app = { id = "com.android.application", version.ref = "agp" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
