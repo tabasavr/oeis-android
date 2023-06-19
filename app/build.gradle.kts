@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appcompat")
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
     implementation("androidx.constraintlayout:constraintlayout:$constraint_version")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle")
