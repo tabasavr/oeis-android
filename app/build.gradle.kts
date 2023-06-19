@@ -48,7 +48,7 @@ dependencies {
     val lifecycle = "2.6.1"
     val fragment_version = "1.6.0"
     val retrofit_version = "2.9.0"
-    val material_version = "1.7.0"
+    val material_version = "1.9.0"
     val constraint_version = "2.1.4"
 
     implementation("com.google.android.material:material:$material_version")
