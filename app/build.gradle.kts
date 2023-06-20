@@ -15,6 +15,7 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -48,6 +49,7 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.livedata)
     implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.multidex)
     implementation(libs.androidx.paging)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.transition)
