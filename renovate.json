@@ -7,6 +7,25 @@
     {
       "matchPackageNames": ["com.diffplug.spotless"],
       "customChangelogUrl": "https://github.com/diffplug/spotless/blob/main/plugin-gradle/CHANGES.md"
+    },
+    {
+      "matchPackagePatterns": [
+        "androidx.compose.compiler:compiler",
+        "composeOptions"
+      ],
+      "groupName": "kotlin"
+    },
+    {
+      "matchPackagePatterns": [
+        "org.jetbrains.kotlin.*"
+      ],
+      "groupName": "kotlin"
+    },
+    {
+      "matchPackagePatterns": [
+        "com.google.devtools.ksp"
+      ],
+      "groupName": "kotlin"
     }
   ]
 }
