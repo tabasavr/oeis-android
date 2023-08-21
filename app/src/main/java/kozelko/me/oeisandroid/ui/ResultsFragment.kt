@@ -36,7 +36,7 @@ class ResultsFragment : Fragment() {
         val adapter = SearchListAdapter()
         binding.resultsRecycler.adapter = adapter.withLoadStateFooter(SearchListLoadStateFooter())
         binding.resultsRecycler.layoutManager = LinearLayoutManager(context)
-        // todo: check how this looks on API 19 or bump minSdk
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.resultsRecycler) { v, insets ->
             val systemBarsInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, systemBarsInsets.bottom)
