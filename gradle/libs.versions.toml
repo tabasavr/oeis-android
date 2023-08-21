@@ -4,7 +4,7 @@
 appcompat = "1.6.1"
 cardview = "1.0.0"
 constraintlayout = "2.1.4"
-fragment = "1.6.0"
+fragment = "1.6.1"
 lifecycle = "2.6.1"
 multidex = "2.0.1"
 paging = "3.1.1"
