@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.extraProperties
+
 plugins {
     alias(libs.plugins.agp.app)
     alias(libs.plugins.kotlin)
@@ -70,7 +72,7 @@ spotless {
     kotlin {
         target("src/*/java/**/*.kt")
         ktlint()
-                .setUseExperimental(true)
-                .userData(mapOf("android" to "true"))
+            .editorConfigOverride(mapOf("ktlint_experimental" to "enable"))
+            .userData(mapOf("android" to "true"))
     }
 }

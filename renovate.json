@@ -5,10 +5,6 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["com.diffplug.spotless"],
-      "customChangelogUrl": "https://github.com/diffplug/spotless/blob/main/plugin-gradle/CHANGES.md"
-    },
-    {
       "matchPackagePatterns": [
         "androidx.compose.compiler:compiler",
         "composeOptions"
