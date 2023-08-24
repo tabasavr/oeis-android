@@ -25,8 +25,8 @@ junit = "4.13.2"
 
 ### Plugins
 agp = "8.1.0"
-kotlin = "1.9.0"
-ksp = "1.9.0-1.0.13"
+kotlin = "1.9.10"
+ksp = "1.9.10-1.0.13"
 spotless = "6.20.0"
 detekt = "1.23.1"
 
