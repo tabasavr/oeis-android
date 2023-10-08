@@ -13,7 +13,7 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "kozelko.me.oeisandroid"
-        minSdk = 19
+        minSdk = 21
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -51,7 +51,6 @@ dependencies {
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle.livedata)
     implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.multidex)
     implementation(libs.androidx.paging)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.transition)
