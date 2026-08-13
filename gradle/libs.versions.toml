@@ -1,7 +1,7 @@
 [versions]
 ### Libraries
 # AndroidX
-appcompat = "1.6.1"
+appcompat = "1.8.0"
 cardview = "1.0.0"
 constraintlayout = "2.1.4"
 fragment = "1.6.2"
